@@ -8,5 +8,6 @@ public class Question {
 
     public static void run(int index, String value) {
         System.out.println("Fui llamado por LA GARRA!!!");
+        // TODO Logica
     }
 }

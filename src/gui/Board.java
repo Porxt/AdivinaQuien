@@ -15,6 +15,7 @@ public class Board extends JFrame implements ActionListener {
     private JComboBox<String> questions;
     private JTextField textFieldValue;
     private final Menu parent;
+    private GridCharacters canvas;
 
     public Board(Menu parent) {
         super("Jugando!!!");
@@ -35,6 +36,8 @@ public class Board extends JFrame implements ActionListener {
     private void initComponents() {
         JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         JButton buttonBack = new JButton("Salir");
+        canvas = new GridCharacters();
+        canvas.setDoubleBuffered(true);
 
         textFieldValue = new JTextField(15);
         questions = new JComboBox<>(Question.questions);
@@ -49,16 +52,22 @@ public class Board extends JFrame implements ActionListener {
         panel.add(buttonAsk);
         panel.add(buttonBack);
 
+        add(canvas, "Center");
         add(panel, "South");
     }
 
     public void actionPerformed(ActionEvent e) {
         int index;
         String value;
+        boolean[] states = {
+                true, false, true, true, true, true, true, true, true, true,
+                true, true, true, false, false, true, false, true, true, true
+        };
         if(e.getSource() == buttonAsk) {
             index = questions.getSelectedIndex();
             value = textFieldValue.getText();
             Question.run(index, value);
+            canvas.updateImages(states);
         } else {
             setVisible(false);
             parent.setVisible(true);
