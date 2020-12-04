@@ -1,8 +1,8 @@
 package logic;
 //Importaciones agregadas
 import java.util.Map;
-import org.jpl7.Query;
-import org.jpl7.Term;
+import jpl.Query;
+import jpl.Term;
 
 public class Question {
 
@@ -11,9 +11,6 @@ public class Question {
     };
 
     public static void run(int index, String value) {
-        System.out.println("Fui llamado por LA GARRA!!!");
-        // TODO Logica
-        
         //Inicia Prueba de conexión a prolog
         //Colocar el nombre del archivo prolog a consultar
         String c1 = "consult('pato.pl')"; 
