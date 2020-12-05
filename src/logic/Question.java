@@ -32,11 +32,13 @@ public class Question {
         String charactersString;
         String[] characters;
 
-        // Iniciamos la conexión
+        // Hacemos la conexión
         String connection = "consult('adivinaquien.pl')";
         Query queryConnection = new Query(connection);
         if(queryConnection.hasSolution()) {
             // Hacemos la pregunta
+            /*
+            Estructura switch valida en JDK 14+
             switch (index) {
                 case 0 -> {
                     question = "pregunta(" + value + ", " + character + ")";
@@ -97,6 +99,70 @@ public class Question {
                     result = true;
                     characters = new String[0];
                 }
+            }
+            */
+
+            switch(index) {
+                case 0:
+                    question = "pregunta(" + value + ", " + character + ")";
+                    ask = new Query(question);
+                    result = ask.hasSolution();
+                    ask.close();
+                    question = "caracteristica_de(" + value + ", X)";
+                    ask = new Query(question);
+                    charactersString = ask.oneSolution().toString();
+                    charactersString = charactersString.substring(4, charactersString.lastIndexOf(']'));
+                    characters = charactersString.split(", ");
+                    break;
+                case 1:
+                    question = "pregunta('piel " + value + "', " + character + ")";
+                    ask = new Query(question);
+                    result = ask.hasSolution();
+                    ask.close();
+                    question = "caracteristica_de('piel " + value + "', X)";
+                    ask = new Query(question);
+                    charactersString = ask.oneSolution().toString();
+                    charactersString = charactersString.substring(4, charactersString.lastIndexOf(']'));
+                    characters = charactersString.split(", ");
+                    break;
+                case 2:
+                    question = "pregunta('sin cabello', " + character + ")";
+                    ask = new Query(question);
+                    result = ask.hasSolution();
+                    ask.close();
+                    question = "caracteristica_de('sin cabello', X)";
+                    ask = new Query(question);
+                    charactersString = ask.oneSolution().toString();
+                    charactersString = charactersString.substring(4, charactersString.lastIndexOf(']'));
+                    characters = charactersString.split(", ");
+                    break;
+                case 3:
+                case 4:
+                case 5:
+                    question = "pregunta('cabello " + value + "', " + character + ")";
+                    ask = new Query(question);
+                    result = ask.hasSolution();
+                    ask.close();
+                    question = "caracteristica_de('cabello " + value + "', X)";
+                    ask = new Query(question);
+                    charactersString = ask.oneSolution().toString();
+                    charactersString = charactersString.substring(4, charactersString.lastIndexOf(']'));
+                    characters = charactersString.split(", ");
+                    break;
+                case 6:
+                    question = "pregunta('ojos " + value + "', " + character + ")";
+                    ask = new Query(question);
+                    result = ask.hasSolution();
+                    ask.close();
+                    question = "caracteristica_de('ojos " + value + "', X)";
+                    ask = new Query(question);
+                    charactersString = ask.oneSolution().toString();
+                    charactersString = charactersString.substring(4, charactersString.lastIndexOf(']'));
+                    characters = charactersString.split(", ");
+                    break;
+                default:
+                    result = true;
+                    characters = new String[0];
             }
         } else {
             result = false;
