@@ -56,7 +56,7 @@ public class Menu extends JFrame implements ActionListener {
         } else if(e.getSource() == buttonAbout) {
             JOptionPane.showMessageDialog(
                     this,
-                    "Creado por Team1234",
+                    "Creado por:\nBrian Josue Mata Chavez (Desarrollador Prolog)\nJose Angel Flores Fermin (Desarrollador Backend Java)\nGermán Barragán Gómez (Desarrollador Frontend Java)",
                     "Saber más...",
                     JOptionPane.INFORMATION_MESSAGE
             );

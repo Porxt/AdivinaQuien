@@ -51,7 +51,6 @@ public class Board extends JFrame implements ActionListener {
     private void chooseCharacter() {
         int choosenOne = (int) Math.floor(Math.random() * 20);
         correctCharacter = names[choosenOne];
-        System.out.println(correctCharacter);
     }
 
     private void initComponents() {
