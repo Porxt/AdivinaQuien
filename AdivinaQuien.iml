@@ -7,10 +7,10 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module-library" exported="">
+    <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../../../../../javaLib/jpl.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../../../../../Archivos de programa/swipl/lib/jpl.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
